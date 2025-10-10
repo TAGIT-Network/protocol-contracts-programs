@@ -1,0 +1,18 @@
+name: use-codex
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        type: choice
+        required: true
+        options: [dev, stage, prod]
+        description: Target environment
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  pipeline:
+    uses: TAG-IT-NETWORK/strategy-governance/.github/workflows/pipeline-contracts.yml@main
+    with:
+      env: ${{ github.event.inputs.env || 'dev' }}
