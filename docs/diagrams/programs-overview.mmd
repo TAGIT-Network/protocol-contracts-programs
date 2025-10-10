@@ -1,0 +1,11 @@
+%% TAGIT Programs Overview Diagram
+flowchart TD
+    subgraph L2[Tagit L2]
+        TP[TransferProgram]
+        RP[RecallProgram]
+        ReP[RewardProgram]
+    end
+    TP -->|TransferLogged| CCIP[CCIP Adapter]
+    RP -->|RecallIssued/Resolved| CCIP
+    ReP -->|RewardGranted| CCIP
+    CCIP --> L1[Partner Chains]
